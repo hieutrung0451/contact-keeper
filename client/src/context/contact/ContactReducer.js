@@ -2,6 +2,7 @@ import {
   ADD_CONTACT,
   DELETE_CONTACT,
   SET_CURRENT,
+  CLEAR_CURRENT,
   UPDATE_CONTACT,
   FILTER_CONTACT,
   CLEAR_FILTER,
@@ -21,7 +22,16 @@ const ContactReducer = (state, action) => {
           (contact) => contact.id !== action.payload
         ),
       };
-
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload,
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null,
+      };
     default:
       return state;
   }
