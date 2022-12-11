@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import ContactContext from "../../context/contact/ContactContext";
+import ContactContext from "../../context/contact/contactContext";
 
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
@@ -28,6 +28,7 @@ const ContactForm = () => {
 
   const { name, email, phone, type } = contact;
 
+  // onChange event for all input
   const onChange = (e) => {
     setContact({ ...contact, [e.target.name]: e.target.value });
   };
@@ -43,12 +44,15 @@ const ContactForm = () => {
     clearAll();
   };
 
+  // Change title and button title
   const changeTitle = current ? "Update Contact" : "Add Contact";
 
+  // Clear all input
   const clearAll = () => {
     clearCurrent();
   };
 
+  // Create button clear, when click on edit button
   const clearButton = current && (
     <div>
       <button className="btn btn-light btn-block" onClick={clearAll}>
