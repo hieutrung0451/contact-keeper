@@ -26,10 +26,8 @@ router.get("/", auth, async (req, res) => {
 // @access   Public
 router.post(
   "/",
-  [
-    check("email", "Please include a valid email").isEmail(),
-    check("password", "Password is required").exists(),
-  ],
+  check("email", "Please include a valid email").isEmail(),
+  check("password", "Password is required").exists(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -65,7 +63,7 @@ router.post(
           expiresIn: 360000,
         },
         (err, token) => {
-          if ((err, token)) if (err) throw err;
+          if (err) throw err;
           res.json({ token });
         }
       );
